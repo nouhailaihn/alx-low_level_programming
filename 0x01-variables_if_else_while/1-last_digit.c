@@ -1,30 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-/**
- * main - Entry point of the program
- *
- * Return: Always 0 (Success)
- */
-int main(void)
-{
-int n;
-int last_digit;
-srand(time(0));
-n = rand()% 100 + 1;
-last_digit = n % 10;
-printf("Last digit of %d is ", n);
-if (last_digit > 5)
-{
-printf("%d and is greater than 5\n", last_digit);
+#include <math.h>
+
+int main(void) {
+    int n;
+    srand(time(0));
+    n = rand() % 200 - 100;  // generate a random number between -100 and 99
+    int abs_n = abs(n);
+    int last_digit = abs_n % 10;
+    int sign = n >= 0 ? 1 : -1;
+    printf("Last digit of %d is %d and is ", n, sign * last_digit);
+    if (last_digit > 5) {
+        printf("greater than 5\n");
+    } else if (last_digit == 0) {
+        printf("0\n");
+    } else {
+        printf("less than 6 and not 0\n");
+    }
+    return 0;
 }
-else if (last_digit == 0)
-{
-printf("%d and is 0\n", last_digit);
-}
-else
-{
-printf("%d and is less than 6 and not 0\n", last_digit);
-}
-return (0);
-}
+
